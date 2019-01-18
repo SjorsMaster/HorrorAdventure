@@ -4,19 +4,18 @@ using System.IO;
 public class InputManagerGame : MonoBehaviour
 {
     string[] keys = File.ReadAllLines("Assets/Resources/keys.txt");
-    GameObject kaas;
-    enum Dir { up, down, left, right };
+    GameObject Player, Enemy;
+    enum Dir { up, down, left, right, idle, Act1, Act2, Act3 };
     
     private PlayerControl anotherScript;
 
     private void Start()
     {
-        kaas = GameObject.Find("Player");
-        anotherScript = kaas.GetComponent<PlayerControl>();
+        Player = GameObject.Find("Player");
+        anotherScript = Player.GetComponent<PlayerControl>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Update()//beatmannager//KeyPress
     {
         if(Input.GetKey(keys[(int)Dir.up]))
         {
@@ -34,7 +33,29 @@ public class InputManagerGame : MonoBehaviour
         {
             anotherScript.Move((int)Dir.right);
         }
+        if (Input.GetKey(keys[(int)Dir.Act1]))
+        {
+            Enemy.GetComponent<BeatManager>.KeyPress();
+        }
+        if (Input.GetKey(keys[(int)Dir.Act2]))
+        {
+            Enemy.GetComponent<BeatManager>.KeyPress();
+        }
+        if (Input.GetKey(keys[(int)Dir.Act3]))
+        {
+            Enemy.GetComponent<BeatManager>.KeyPress();
+        }
+        else
+        {
+            anotherScript.Move((int)Dir.idle);
+        }
+    }
+
+    public void GetEnemy(GameObject Target)
+    {
+        Enemy = Target;
     }
 
 
 }
+                                                                                
