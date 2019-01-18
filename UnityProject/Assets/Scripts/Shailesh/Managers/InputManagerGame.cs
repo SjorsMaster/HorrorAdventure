@@ -35,15 +35,15 @@ public class InputManagerGame : MonoBehaviour
         }
         if (Input.GetKey(keys[(int)Dir.Act1]))
         {
-            Enemy.GetComponent<BeatManager>.KeyPress();
+            Enemy.GetComponent<BeatManager>().KeyPress();
         }
         if (Input.GetKey(keys[(int)Dir.Act2]))
         {
-            Enemy.GetComponent<BeatManager>.KeyPress();
+            Enemy.GetComponent<BeatManager>().KeyPress();
         }
         if (Input.GetKey(keys[(int)Dir.Act3]))
         {
-            Enemy.GetComponent<BeatManager>.KeyPress();
+            Enemy.GetComponent<BeatManager>().KeyPress();
         }
         else
         {
