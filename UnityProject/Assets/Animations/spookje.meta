@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:UnityProject/Assets/Animations/spookje.meta
 guid: 57bf021ea431e2b469658566f4420d39
+=======
+guid: 6faf589673312634ea87860dc6509a37
+>>>>>>> a2ee73e9ad098731a5fce3a027cc0546c09d108b:UnityProject/Assets/Animations/spookje.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
