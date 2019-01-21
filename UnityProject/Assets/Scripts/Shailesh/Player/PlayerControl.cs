@@ -2,29 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControl : MonoBehaviour
+public class PlayerControl : CharacterFlip
 {
     Animator CharacterAnimation;
-    bool turning;
-    int direction;
 
     private void Start()
     {
         CharacterAnimation = GetComponent<Animator>();
-    }
-
-    private void Update()
-    {
-        if(turning == true)
-        {
-            transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(direction, 1, 1), 0.2f);
-            if(transform.localScale.x == direction)
-            {
-                turning = false;
-
-            }
-
-        }
     }
 
     public void Move(int dir)
@@ -56,11 +40,5 @@ public class PlayerControl : MonoBehaviour
         {
             CharacterAnimation.SetInteger("Dir", 0);
         }
-    }
-
-    void Turn(int dirx)
-    {
-        direction = dirx;
-        turning = true;
     }
 }
