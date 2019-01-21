@@ -5,9 +5,14 @@ using UnityEngine;
 public class DepthInObjects : MonoBehaviour
 {
 
-    void Update()
+    private void Start()
     {
-        transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.y);
+       // UpdateDepth();
+    }
+
+    public void Update()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
     }
 
 }

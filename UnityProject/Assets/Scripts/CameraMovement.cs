@@ -16,9 +16,8 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((transform.position.x.ToString("n2") != Target.transform.position.x.ToString("n2")) && (transform.position.y.ToString("n2") != Target.transform.position.y.ToString("n2")))
+        if ((transform.position.x.ToString("n2") != Target.transform.position.x.ToString("n2")) || (transform.position.y.ToString("n2") != Target.transform.position.y.ToString("n2")))
         {
-            Debug.Log(transform.position.x.ToString("n2") + "||" + Target.transform.position.x.ToString("n2"));
             Speed += 0.01f / 100;
             transform.position = Vector3.Lerp(transform.position, new Vector3(Target.transform.position.x, Target.transform.position.y, -10), Speed);
         }

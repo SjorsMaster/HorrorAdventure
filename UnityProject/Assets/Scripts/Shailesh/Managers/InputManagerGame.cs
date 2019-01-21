@@ -19,7 +19,6 @@ public class InputManagerGame : MonoBehaviour
     {
         if (Input.anyKey)
         {
-
             if (Input.GetKey(keys[(int)Dir.up]))
             {
                 anotherScript.Move((int)Dir.up);
