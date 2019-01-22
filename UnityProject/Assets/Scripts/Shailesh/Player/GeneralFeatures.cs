@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class GeneralFeatures : MonoBehaviour
 {
-
     [SerializeField]
     GameObject Target;
     [SerializeField]
     bool turning, KeepCheckingDistance;
     [SerializeField]
-    int direction;
+    float direction;
 
     private void Start()
     {
+        direction = transform.localScale.x;
+        transform.localScale = new Vector3(direction, 1, 1);
         UpdateDepth();
     }
 
