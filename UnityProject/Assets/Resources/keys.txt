@@ -2,3 +2,10 @@ up
 down
 left
 right
+z
+x
+c
+escape
+a
+s
+d
