@@ -37,7 +37,7 @@ public class InputManagerGame : MonoBehaviour
             }
             if (Input.GetKey(keys[(int)Dir.Act1]))
             {
-                Enemy.GetComponent<BPM>().Beatpress(keys[(int)Dir.Act1]);//voeg enemy toe
+                Enemy.GetComponent<BPM>().Beatpress(keys[(int)Dir.Act1]);//voeg enemy toe \\aura nodig!
             }
             if (Input.GetKey(keys[(int)Dir.Act2]))
             {
