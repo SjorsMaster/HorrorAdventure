@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FightManager : MonoBehaviour
 {   [SerializeField]
-    readonly float detectionRange = 2;
+    readonly float detectionRange = 3;
     readonly string tagName = "Monster";
     GameObject[] monsterArray;
     float distanceToMonsterX;
@@ -30,8 +30,12 @@ public class FightManager : MonoBehaviour
             distanceToMonsterY =  monsterArray[i].transform.position.y - transform.position.y;
             if (distanceToMonsterX < detectionRange && distanceToMonsterY < detectionRange)
             {
-                Debug.Log("Kanker, er is een monster in de buurt");
+				InitiateBattle();
             }
         }
     }
+
+	void InitiateBattle() {
+		
+	}
 }
