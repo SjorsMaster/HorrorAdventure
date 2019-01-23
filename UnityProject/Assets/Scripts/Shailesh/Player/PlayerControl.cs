@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControl : CharacterFlip
+public class PlayerControl : GeneralFeatures
+
 {
     Animator CharacterAnimation;
 
@@ -13,7 +14,7 @@ public class PlayerControl : CharacterFlip
 
     public void Move(int dir)
     {
-
+        UpdateDepth();
         if (dir == 0)//up
         {
             transform.Translate(Vector2.up * Time.deltaTime);
