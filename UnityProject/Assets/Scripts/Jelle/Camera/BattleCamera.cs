@@ -30,16 +30,16 @@ public class BattleCamera : MonoBehaviour
             cam.orthographicSize += stepSize;
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            BattleZoom();
-        }
-
 
     }
 
-    void BattleZoom()
+    public void BattleZoomIn()
     {
-        zoom = !zoom;
+        zoom = true;
+    }
+
+    public void BattleZoomOut()
+    {
+        zoom = false;
     }
 }
