@@ -5,17 +5,55 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     GameObject Target;
+    Camera cam;
     [SerializeField]
-    float Speed;
-    // Start is called before the first frame update
+    bool zoom;
+    float Speed = 0;
+
     void Start()
     {
+        cam = GetComponent<Camera>();
         Target = GameObject.Find("Player");
     }
 
-    // Update is called once per frame
+    public void ToggleZoom()
+    {
+        zoom = !zoom;
+    }
+
     void Update()
     {
+        if (Input.GetKeyDown("space"))
+        {
+            zoom = !zoom;
+        }
+
+        BattleZoomer();
+        SmoothMover();
+
+    }
+
+    void BattleZoomer()
+    {
+        float maxSize = 6.5f,
+              minSize = 3.5f,
+              stepSize = 0.1f;
+
+        if (zoom && cam.orthographicSize > minSize)
+        {
+            cam.orthographicSize -= stepSize;
+        }
+
+        if (!zoom && cam.orthographicSize < maxSize)
+        {
+            cam.orthographicSize += stepSize;
+        }
+    }
+
+
+    void SmoothMover()
+    {
+
         if ((transform.position.x.ToString("n2") != Target.transform.position.x.ToString("n2")) || (transform.position.y.ToString("n2") != Target.transform.position.y.ToString("n2")))
         {
             Speed += 0.01f / 100;
@@ -28,13 +66,14 @@ public class CameraMovement : MonoBehaviour
                 Speed -= 0.01f * 10;
             }
         }
-        if(Speed > 0.1f)
+        if (Speed > 0.1f)
         {
             Speed = 0.1f;
         }
-        if(Speed < 0.0001)
+        if (Speed < 0.0001)
         {
             Speed = 0.0001f;
         }
     }
+    
 }
