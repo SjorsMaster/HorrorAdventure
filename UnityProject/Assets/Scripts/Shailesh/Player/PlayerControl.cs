@@ -28,13 +28,13 @@ public class PlayerControl : GeneralFeatures
         if (dir == 2)//left
         {
             Turn(-1);
-            transform.Translate(Vector2.left * Time.deltaTime);
+            transform.Translate((Vector2.left *2) * Time.deltaTime);
             CharacterAnimation.SetInteger("Dir", 2);
         }
         if (dir == 3)//right
         {
             Turn(1);
-            transform.Translate(Vector2.right * Time.deltaTime);
+            transform.Translate((Vector2.right * 2) * Time.deltaTime);
             CharacterAnimation.SetInteger("Dir", 2);
         }
         if (dir == 4)//idle
