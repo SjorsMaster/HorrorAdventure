@@ -16,6 +16,7 @@ public class RingDetector : MonoBehaviour
         if(other.gameObject.name == "Spook")
         {
             BPM.GetComponent<BPM>().ToggleBeat(true);
+            other.gameObject.GetComponent<EnemyWosh>().ChangeSpeed(0.3f);
         }
         Debug.Log(other);
     }
@@ -25,6 +26,7 @@ public class RingDetector : MonoBehaviour
         if (other.gameObject.name == "Spook")
         {
             BPM.GetComponent<BPM>().ToggleBeat(false);
+            other.gameObject.GetComponent<EnemyWosh>().ChangeSpeed(1f);
         }
     }
 }
