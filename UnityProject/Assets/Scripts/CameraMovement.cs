@@ -16,9 +16,9 @@ public class CameraMovement : MonoBehaviour
         Target = GameObject.Find("Player");
     }
 
-    public void ToggleZoom()
+    public void ToggleZoom(bool State)
     {
-        zoom = !zoom;
+        zoom = State;
     }
 
     void Update()
