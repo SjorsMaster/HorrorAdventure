@@ -50,7 +50,7 @@ public class BPM : MonoBehaviour
             EncounterMusic.volume += 0.025f;
             if ((Timer <= .1f || Timer >= 0.9f) && EncounterMusic.volume == 1)
             {
-                RandomInput();
+                //RandomInput();
                 Syncer.enabled = true;
                 Beat = true;
             }
@@ -69,7 +69,7 @@ public class BPM : MonoBehaviour
 
     public void Beatpress(string buttonPressed)
     {
-        if((int.Parse(buttonPressed) != (buttonToPress + 5)) && !Beat)
+        if(/*(int.Parse(buttonPressed) != (buttonToPress + 5)) && */!Beat)
         {
             Debug.Log("DOOD");
         }
@@ -78,7 +78,7 @@ public class BPM : MonoBehaviour
             Debug.Log("win");
         }
     }
-
+    /*
     void RandomInput()
     {
         if(buttonToPress == -1)
@@ -86,7 +86,7 @@ public class BPM : MonoBehaviour
             buttonToPress = Random.Range(0, 3);
             Debug.Log(buttonToPress);
         }
-    }
+    }*/
 
     public void ToggleBeat(bool State)
     {
