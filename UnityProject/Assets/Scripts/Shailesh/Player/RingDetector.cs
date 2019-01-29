@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RingDetector : MonoBehaviour
 {
+    bool seen;
     GameObject BPM;
 
     void Start()
@@ -13,20 +14,27 @@ public class RingDetector : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.name == "Spook")
+        if (!seen)
         {
-            BPM.GetComponent<BPM>().ToggleBeat(true);
-            other.gameObject.GetComponent<EnemyWosh>().ChangeSpeed(0.3f);
+            if (other.gameObject.name == "Spook")
+            {
+                BPM.GetComponent<BPM>().ToggleBeat(true);
+                other.gameObject.GetComponent<EnemyWosh>().ChangeSpeed(0.3f);
+                seen = true;
+            }
         }
-        Debug.Log(other);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.name == "Spook")
+        if (seen)
         {
-            BPM.GetComponent<BPM>().ToggleBeat(false);
-            other.gameObject.GetComponent<EnemyWosh>().ChangeSpeed(1f);
+            if (other.gameObject.name == "Spook")
+            {
+                BPM.GetComponent<BPM>().ToggleBeat(false);
+                other.gameObject.GetComponent<EnemyWosh>().ChangeSpeed(1f);
+                seen = false;
+            }
         }
     }
 }
