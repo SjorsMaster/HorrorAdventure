@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RingDetector : MonoBehaviour
 {
     bool seen;
     GameObject BPM;
+    readonly string tagName = "Monster";
 
     void Start()
     {
@@ -16,11 +18,9 @@ public class RingDetector : MonoBehaviour
     {
         if (!seen)
         {
-            if (other.gameObject.name == "Spook")
+            if (other.gameObject.tag == tagName)
             {
-                BPM.GetComponent<BPM>().ToggleBeat(true);
-                other.gameObject.GetComponent<EnemyWosh>().ChangeSpeed(0.3f);
-                seen = true;
+                Battle(other.gameObject, true, 0.3f);
             }
         }
     }
@@ -29,12 +29,16 @@ public class RingDetector : MonoBehaviour
     {
         if (seen)
         {
-            if (other.gameObject.name == "Spook")
+            if (other.gameObject.tag == tagName)
             {
-                BPM.GetComponent<BPM>().ToggleBeat(false);
-                other.gameObject.GetComponent<EnemyWosh>().ChangeSpeed(1f);
-                seen = false;
+                Battle(other.gameObject, false, 1f);
             }
         }
+    }
+    private void Battle(GameObject go, bool toggleSeen, float cSpeed)
+    {
+        BPM.GetComponent<BPM>().ToggleBeat(toggleSeen);
+        go.gameObject.GetComponent<EnemyWosh>().ChangeSpeed(cSpeed);
+        seen = toggleSeen;
     }
 }
