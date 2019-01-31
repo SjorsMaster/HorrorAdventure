@@ -11,11 +11,14 @@ public class EnemyWosh : MonoBehaviour
     GameObject player;
     bool attackPlayer;
 
+    int health;
+
     Animator EnemyAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
+        health = 20;
         player = GameObject.Find("Player");
         dir = Random.Range(0,4);
         EnemyAnimator = GetComponent<Animator>();
@@ -76,17 +79,31 @@ public class EnemyWosh : MonoBehaviour
     public void Attack()
     {
         attackPlayer = true;
-        EnemyAnimator.SetInteger("Dir", 1);
+        EnemyAnimator.SetTrigger("Attack");
     }
 
     public void FloatAway()
     {
         EnemyAnimator.SetInteger("Dir", 2);
-        Destroy(this.gameObject, 1.5f);
+        Destroy(this.gameObject, 1.2f);
     }
 
     public void Idle()
     {
         EnemyAnimator.SetInteger("Dir", 0);
+    }
+
+    public void TakeHealth()
+    {
+        if(health > 0)
+        {
+            health = health - 1;
+            Debug.Log(health);
+        }
+
+        if(health == 0)
+        {
+            FloatAway();
+        }
     }
 }

@@ -7,6 +7,8 @@ public class Health : MonoBehaviour
 
     int health = 3;
 
+    EnemyWosh enemyscript;
+
     GameObject heart;
 
     public void TakeHealth()
@@ -18,7 +20,6 @@ public class Health : MonoBehaviour
         {
             Destroy(heart, 1.2f);
             health = health - 1;
-            Debug.Log(health);
         }
     }
 }

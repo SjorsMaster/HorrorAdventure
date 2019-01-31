@@ -10,8 +10,10 @@ public class RingDetector : MonoBehaviour
     GameObject ScreenUI;
     readonly string tagName = "Monster";
     GameObject topBar, downBar;
+    GameObject enemyInRing;
     bool inBattle = false;
     int counter;
+
     void Start()
     {
         BPM = GameObject.Find("BPMSync");
@@ -42,12 +44,27 @@ public class RingDetector : MonoBehaviour
         {
             if (other.gameObject.tag == tagName)
             {
-                other.gameObject.GetComponent<EnemyWosh>().Attack();
-                ScreenUI.gameObject.GetComponent<Health>().TakeHealth();
+                enemyInRing = other.gameObject;
+                BPM.GetComponent<AudioSource>().volume = 0;
                 Battle(other.gameObject, true, 0.3f);
                 inBattle = true;
             }
         }
+    }
+
+    public void EnemyInRingTakeHealth()
+    {
+        enemyInRing.GetComponent<EnemyWosh>().TakeHealth();
+    }
+
+    public void TakeLifePlayer()
+    {
+        ScreenUI.gameObject.GetComponent<Health>().TakeHealth();
+    }
+
+    public void EnemyInRingAttack()
+    {
+        enemyInRing.GetComponent<EnemyWosh>().Attack();
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -56,6 +73,7 @@ public class RingDetector : MonoBehaviour
         {
             if (other.gameObject.tag == tagName)
             {
+                BPM.GetComponent<AudioSource>().volume = 1;
                 other.gameObject.GetComponent<EnemyWosh>().Idle();
                 Battle(other.gameObject, false, 1f);
                 inBattle = false;
