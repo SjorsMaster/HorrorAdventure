@@ -8,10 +8,14 @@ public class EnemyWosh : MonoBehaviour
     float speed;
     float timer = 0;
     int dir;
+
+    Animator EnemyAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
         dir = Random.Range(0,4);
+        EnemyAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,7 +26,6 @@ public class EnemyWosh : MonoBehaviour
         {
             timer = 0;
             dir = Random.Range(1,5);
-            Debug.Log(dir);
         }
         MoveEnemy(dir);
     }
@@ -49,5 +52,21 @@ public class EnemyWosh : MonoBehaviour
     public void ChangeSpeed(float speedVar)
     {
         speed = speedVar;
+    }
+
+    public void Attack()
+    {
+        EnemyAnimator.SetInteger("Dir", 1);
+    }
+
+    public void FloatAway()
+    {
+        EnemyAnimator.SetInteger("Dir", 2);
+        Destroy(this.gameObject, 1.5f);
+    }
+
+    public void Idle()
+    {
+        EnemyAnimator.SetInteger("Dir", 0);
     }
 }

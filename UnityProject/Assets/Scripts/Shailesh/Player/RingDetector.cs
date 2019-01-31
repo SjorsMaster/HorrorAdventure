@@ -40,6 +40,7 @@ public class RingDetector : MonoBehaviour
         {
             if (other.gameObject.tag == tagName)
             {
+                other.gameObject.GetComponent<EnemyWosh>().Attack();
                 Battle(other.gameObject, true, 0.3f);
                 inBattle = true;
             }
@@ -52,6 +53,7 @@ public class RingDetector : MonoBehaviour
         {
             if (other.gameObject.tag == tagName)
             {
+                other.gameObject.GetComponent<EnemyWosh>().Idle();
                 Battle(other.gameObject, false, 1f);
                 inBattle = false;
             }

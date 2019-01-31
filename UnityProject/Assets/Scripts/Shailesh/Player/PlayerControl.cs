@@ -6,6 +6,7 @@ public class PlayerControl : GeneralFeatures
 
 {
     Animator CharacterAnimation;
+    BPM bpmscript;
 
     private void Start()
     {
@@ -16,7 +17,7 @@ public class PlayerControl : GeneralFeatures
     {
         UpdateDepth();
         if (dir == 0)//up
-        {
+        {  
             transform.Translate(Vector2.up * Time.deltaTime);
             CharacterAnimation.SetInteger("Dir", 1);
         }
