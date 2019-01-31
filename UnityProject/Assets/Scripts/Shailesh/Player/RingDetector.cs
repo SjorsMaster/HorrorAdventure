@@ -7,6 +7,7 @@ public class RingDetector : MonoBehaviour
 {
     bool seen;
     GameObject BPM;
+    GameObject ScreenUI;
     readonly string tagName = "Monster";
     GameObject topBar, downBar;
     bool inBattle = false;
@@ -14,6 +15,7 @@ public class RingDetector : MonoBehaviour
     void Start()
     {
         BPM = GameObject.Find("BPMSync");
+        ScreenUI = GameObject.Find("Canvas");
         topBar = GameObject.FindGameObjectWithTag("UpBar");
         downBar = GameObject.FindGameObjectWithTag("DownBar");
     }
@@ -41,6 +43,7 @@ public class RingDetector : MonoBehaviour
             if (other.gameObject.tag == tagName)
             {
                 other.gameObject.GetComponent<EnemyWosh>().Attack();
+                ScreenUI.gameObject.GetComponent<Health>().TakeHealth();
                 Battle(other.gameObject, true, 0.3f);
                 inBattle = true;
             }
