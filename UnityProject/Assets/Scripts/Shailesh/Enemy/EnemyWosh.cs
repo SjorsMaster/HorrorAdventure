@@ -10,6 +10,7 @@ public class EnemyWosh : MonoBehaviour
     int dir;
     GameObject player;
     bool attackPlayer;
+    GameObject ringDetect;
 
     int health;
 
@@ -18,6 +19,7 @@ public class EnemyWosh : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ringDetect = GameObject.Find("HitRing");
         health = 3;
         player = GameObject.Find("Player");
         dir = Random.Range(0,4);
@@ -102,6 +104,7 @@ public class EnemyWosh : MonoBehaviour
 
         if(health == 0)
         {
+            ringDetect.GetComponent<RingDetector>().Battle();
             FloatAway();
         }
     }

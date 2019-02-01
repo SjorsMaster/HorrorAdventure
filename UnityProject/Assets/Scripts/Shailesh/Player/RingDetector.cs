@@ -101,4 +101,9 @@ public class RingDetector : MonoBehaviour
         Battle(other.gameObject, false, 1f);
         inBattle = false;
     }
+
+    public void Battle()
+    {
+        ToggleOffMonster(enemyInRing);
+    }
 }

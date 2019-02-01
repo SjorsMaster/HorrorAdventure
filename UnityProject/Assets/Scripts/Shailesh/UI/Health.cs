@@ -10,7 +10,7 @@ public class Health : MonoBehaviour
     EnemyWosh enemyscript;
 
     GameObject heart;
-    
+
 
     public void TakeHealth()
     {

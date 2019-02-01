@@ -66,31 +66,26 @@ public class BPM : MonoBehaviour
             }
             if (timtim >= echtebpm)
             {
-                LifeTaken = false;
-
-                Got = false;
                 Beat = false;
                 timtim = 0;
             }
 
-            if(Beat)
+            if (Beat)
             {
                 Syncer.enabled = true;
-                if (Input.GetKeyDown("z") && EncounterMusic.volume == 1)
+                if (Input.GetKeyDown("z"))
                 {
-                    Got = true;
-                    ringscript.EnemyInRingTakeHealth();
+                    Ring.GetComponent<RingDetector>().EnemyInRingTakeHealth();
                 }
             }
             else
             {
                 Syncer.enabled = false;
-                if (!Got && !Beat && !LifeTaken && EncounterMusic.volume == 1)
+                if (Input.GetKeyDown("z"))
                 {
-                    LifeTaken = true;
-                    ringscript.TakeLifePlayer();
+                    Ring.GetComponent<RingDetector>().TakeLifePlayer();
 
-                    ringscript.EnemyInRingAttack();
+                    Ring.GetComponent<RingDetector>().EnemyInRingAttack();
                 }
             }
 
