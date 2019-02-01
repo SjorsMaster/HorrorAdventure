@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
     EnemyWosh enemyscript;
 
     GameObject heart;
+    
 
     public void TakeHealth()
     {
@@ -20,6 +21,11 @@ public class Health : MonoBehaviour
         {
             Destroy(heart, 1.2f);
             health = health - 1;
+        }
+        if (health <= 0)
+        {
+            GameObject.Find("Player").GetComponent<PlayerControl>().Move(5);
+            Destroy(gameObject);
         }
     }
 }

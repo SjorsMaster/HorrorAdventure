@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RingDetector : MonoBehaviour
@@ -45,10 +46,13 @@ public class RingDetector : MonoBehaviour
             if (other.gameObject.tag == tagName)
             {
                 enemyInRing = other.gameObject;
-                BPM.GetComponent<AudioSource>().volume = 0;
                 Battle(other.gameObject, true, 0.3f);
                 inBattle = true;
             }
+        }
+        if (other.gameObject.name == "Exit")
+        {
+            SceneManager.LoadScene("nocd");
         }
     }
 
@@ -64,7 +68,14 @@ public class RingDetector : MonoBehaviour
 
     public void EnemyInRingAttack()
     {
-        enemyInRing.GetComponent<EnemyWosh>().Attack();
+        if (enemyInRing != null)
+        {
+            enemyInRing.GetComponent<EnemyWosh>().Attack();
+        }
+        else
+        {
+            ToggleOffMonster(enemyInRing);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -73,10 +84,7 @@ public class RingDetector : MonoBehaviour
         {
             if (other.gameObject.tag == tagName)
             {
-                BPM.GetComponent<AudioSource>().volume = 1;
-                other.gameObject.GetComponent<EnemyWosh>().Idle();
-                Battle(other.gameObject, false, 1f);
-                inBattle = false;
+                ToggleOffMonster(enemyInRing);
             }
         }
     }
@@ -85,5 +93,12 @@ public class RingDetector : MonoBehaviour
         BPM.GetComponent<BPM>().ToggleBeat(toggleSeen);
         go.gameObject.GetComponent<EnemyWosh>().ChangeSpeed(cSpeed);
         seen = toggleSeen;
+    }
+
+    void ToggleOffMonster(GameObject other)
+    {
+        other.gameObject.GetComponent<EnemyWosh>().Idle();
+        Battle(other.gameObject, false, 1f);
+        inBattle = false;
     }
 }

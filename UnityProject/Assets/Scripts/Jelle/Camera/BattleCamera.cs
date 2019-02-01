@@ -11,12 +11,7 @@ public class BattleCamera : MonoBehaviour
     [SerializeField]
     float stepSize = 0.1f;
     bool zoom = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
-    // Update is called once per frame
     void Update()
     {
         var cam = GetComponent<Camera>();
@@ -29,8 +24,6 @@ public class BattleCamera : MonoBehaviour
         {
             cam.orthographicSize += stepSize;
         }
-
-
     }
 
     public void BattleZoomIn()

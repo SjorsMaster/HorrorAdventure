@@ -38,6 +38,7 @@ public class BPM : MonoBehaviour
         song = GameObject.Find("BPMSync").GetComponent<AudioSource>();
         Syncer = GameObject.Find("BPMSync").GetComponent<Image>();
         song.Play();
+        song.volume = 0.5f;
         EncounterMusic.volume = 0;
         EncounterMusic.Play();
         Timer = Offset;
@@ -75,7 +76,7 @@ public class BPM : MonoBehaviour
             if(Beat)
             {
                 Syncer.enabled = true;
-                if (Input.GetKeyDown("z"))
+                if (Input.GetKeyDown("z") && EncounterMusic.volume == 1)
                 {
                     Got = true;
                     ringscript.EnemyInRingTakeHealth();
@@ -84,7 +85,7 @@ public class BPM : MonoBehaviour
             else
             {
                 Syncer.enabled = false;
-                if (!Got && !Beat && !LifeTaken)
+                if (!Got && !Beat && !LifeTaken && EncounterMusic.volume == 1)
                 {
                     LifeTaken = true;
                     ringscript.TakeLifePlayer();
@@ -94,13 +95,13 @@ public class BPM : MonoBehaviour
             }
 
 
-            EncounterMusic.volume = 1;
+            EncounterMusic.volume += 0.01f;
           
          
         }
         else
         {
-            EncounterMusic.volume = 0;
+            EncounterMusic.volume -= 0.01f;
         }
 
 

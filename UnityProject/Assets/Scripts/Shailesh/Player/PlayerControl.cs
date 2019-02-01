@@ -42,5 +42,10 @@ public class PlayerControl : GeneralFeatures
         {
             CharacterAnimation.SetInteger("Dir", 0);
         }
+        if(dir == 5)//Death
+        {
+            CharacterAnimation.SetInteger("Dir", 5);
+        }
     }
+    
 }

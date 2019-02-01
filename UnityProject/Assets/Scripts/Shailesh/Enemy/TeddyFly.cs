@@ -16,7 +16,7 @@ public class TeddyFly : MonoBehaviour
     {
         if (notAtGoal)
         {
-            transform.position = Vector3.Lerp(transform.position, Target, 0.1f / 15);
+            transform.position = Vector3.Lerp(transform.position, Target, 0.1f / 45);
         }
         if(transform.position == Target)
         {

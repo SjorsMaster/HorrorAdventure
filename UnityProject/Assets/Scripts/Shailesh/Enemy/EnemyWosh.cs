@@ -18,7 +18,7 @@ public class EnemyWosh : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = 20;
+        health = 3;
         player = GameObject.Find("Player");
         dir = Random.Range(0,4);
         EnemyAnimator = GetComponent<Animator>();
@@ -98,7 +98,6 @@ public class EnemyWosh : MonoBehaviour
         if(health > 0)
         {
             health = health - 1;
-            Debug.Log(health);
         }
 
         if(health == 0)

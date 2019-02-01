@@ -23,10 +23,6 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("space"))
-        {
-            zoom = !zoom;
-        }
 
         BattleZoomer();
         SmoothMover();

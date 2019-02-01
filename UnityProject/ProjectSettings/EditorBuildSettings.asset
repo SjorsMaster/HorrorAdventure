@@ -5,10 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/MainScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
-    path: Assets/WorkInProgress/Sjors/SceneSjors.unity
-    guid: d073dba9033c4364bb1271a6e039b5a6
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/WorkInProgress/Jelle/Main Scene.unity
+    guid: 01bfe68cb42bb9f44932980960d6ba1a
+  - enabled: 1
+    path: Assets/WorkInProgress/Jelle/nocd.unity
+    guid: 9197c57556cffee48aca75a334c32df4
   m_configObjects: {}
