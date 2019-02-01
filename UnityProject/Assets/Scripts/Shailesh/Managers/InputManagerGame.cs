@@ -35,18 +35,6 @@ public class InputManagerGame : MonoBehaviour
             {
                 anotherScript.Move((int)Dir.right);
             }
-            if (Input.GetKey(keys[(int)Dir.Act1]))
-            {
-                Enemy.GetComponent<BPM>().Beatpress(keys[(int)Dir.Act1]);//voeg enemy toe \\aura nodig!
-            }
-            if (Input.GetKey(keys[(int)Dir.Act2]))
-            {
-                Enemy.GetComponent<BPM>().Beatpress(keys[(int)Dir.Act2]);
-            }
-            if (Input.GetKey(keys[(int)Dir.Act3]))
-            {
-                Enemy.GetComponent<BPM>().Beatpress(keys[(int)Dir.Act3]);
-            }
         }
         else
         {

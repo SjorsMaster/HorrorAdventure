@@ -20,16 +20,18 @@ public class BPM : MonoBehaviour
     float echtebpm;
 
     GameObject Ring;
+    RingDetector ringscript;
 
 
     int buttonToPress = -1;
 
     [SerializeField]
-    bool Beat, Active = false;
+    bool Beat, Active = false, Got = false, LifeTaken = false;
 
     void Start()
     {
         Ring = GameObject.Find("HitRing");
+        ringscript = Ring.GetComponent<RingDetector>();
         timtim = 0;
         Camera = GameObject.Find("Camera");
         EncounterMusic = GameObject.Find("HitRing").GetComponent<AudioSource>();
@@ -63,6 +65,9 @@ public class BPM : MonoBehaviour
             }
             if (timtim >= echtebpm)
             {
+                LifeTaken = false;
+
+                Got = false;
                 Beat = false;
                 timtim = 0;
             }
@@ -72,41 +77,29 @@ public class BPM : MonoBehaviour
                 Syncer.enabled = true;
                 if (Input.GetKeyDown("z"))
                 {
-                    Ring.GetComponent<RingDetector>().EnemyInRingTakeHealth();
+                    Got = true;
+                    ringscript.EnemyInRingTakeHealth();
                 }
             }
             else
             {
                 Syncer.enabled = false;
-                if (Input.GetKeyDown("z"))
+                if (!Got && !Beat && !LifeTaken)
                 {
-                    Ring.GetComponent<RingDetector>().TakeLifePlayer();
+                    LifeTaken = true;
+                    ringscript.TakeLifePlayer();
 
-                    Ring.GetComponent<RingDetector>().EnemyInRingAttack();
+                    ringscript.EnemyInRingAttack();
                 }
             }
 
 
             EncounterMusic.volume = 1;
-            /*if ((Timer <= .1f || Timer >= 0.9f) && EncounterMusic.volume == 1)
-            {
-                //RandomInput();
-                //song.volume = 0;
-                Syncer.enabled = true;
-                Beat = true;
-            }
-            else
-            {
-                buttonToPress = -1;
-                Syncer.enabled = false;
-                Beat = false;
-            }
-            */
+          
          
         }
         else
         {
-            //song.volume = 1;
             EncounterMusic.volume = 0;
         }
 
@@ -114,27 +107,6 @@ public class BPM : MonoBehaviour
 
       
     }
-
-    public void Beatpress(string buttonPressed)
-    {
-        if(/*(int.Parse(buttonPressed) != (buttonToPress + 5)) && */!Beat)
-        {
-            Debug.Log("DOOD");
-        }
-        else
-        {
-            Debug.Log("win");
-        }
-    }
-    /*
-    void RandomInput()
-    {
-        if(buttonToPress == -1)
-        {
-            buttonToPress = Random.Range(0, 3);
-            Debug.Log(buttonToPress);
-        }
-    }*/
 
     public void ToggleBeat(bool State)
     {
