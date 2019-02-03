@@ -58,6 +58,7 @@ public class RingDetector : MonoBehaviour
 
     public void EnemyInRingTakeHealth()
     {
+        if(enemyInRing != null)
         enemyInRing.GetComponent<EnemyWosh>().TakeHealth();
     }
 

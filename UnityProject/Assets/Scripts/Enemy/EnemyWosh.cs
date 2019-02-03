@@ -12,6 +12,8 @@ public class EnemyWosh : MonoBehaviour
     bool attackPlayer;
     GameObject ringDetect;
 
+    GeneralFeatures script;
+
     int health;
 
     Animator EnemyAnimator;
@@ -19,6 +21,7 @@ public class EnemyWosh : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        script = this.gameObject.GetComponent<GeneralFeatures>();
         ringDetect = GameObject.Find("HitRing");
         health = 3;
         player = GameObject.Find("Player");
@@ -39,11 +42,11 @@ public class EnemyWosh : MonoBehaviour
         {
             if (transform.position.x < player.transform.position.x)
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                script.Turn(-1);
             }
             else
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                script.Turn(1);
             }
         }
 
@@ -63,11 +66,11 @@ public class EnemyWosh : MonoBehaviour
                 transform.Translate(Vector2.down * speed * Time.deltaTime);
                 break;
             case 3:
-                transform.localScale = new Vector3(1, 1, 1);
+                script.Turn(1);
                 transform.Translate(Vector2.left * speed * Time.deltaTime);
                 break;
             case 4:
-                transform.localScale = new Vector3(-1, 1, 1);
+                script.Turn(-1);
                 transform.Translate(Vector2.right * speed * Time.deltaTime);
                 break;
         }

@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class BPM : MonoBehaviour
 {
     [SerializeField]
+    bool INVINCIBLUH;
+
+    [SerializeField]
     AudioSource EncounterMusic;
 
     GameObject Camera;
@@ -56,6 +59,10 @@ public class BPM : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown("g"))
+        {
+            INVINCIBLUH = !INVINCIBLUH;
+        }
         if (Active)
         {
 
@@ -81,7 +88,7 @@ public class BPM : MonoBehaviour
             else
             {
                 Syncer.enabled = false;
-                if (Input.GetKeyDown("z"))
+                if (Input.GetKeyDown("z") && (!INVINCIBLUH))
                 {
                     Ring.GetComponent<RingDetector>().TakeLifePlayer();
 
